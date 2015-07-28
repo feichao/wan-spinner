@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>demo wan-spinner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../build/wan-spinner.css">
+</head>
+
+<body>
+  <div class="wan-spinner wan-spinner-1">
+    <a href="javascript:void(0)" class="minus">-</a>
+    <input type="text" value="1">
+    <a href="javascript:void(0)" class="plus">+</a>
+  </div>
+  <div class="wan-spinner wan-spinner-2">
+    <a href="javascript:void(0)" class="minus">-</a>
+    <input type="text" value="1">
+    <a href="javascript:void(0)" class="plus">+</a>
+  </div>
+  <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+  <script type="text/javascript" src="../build/wan-spinner.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    var options = {
+      maxValue: 3,
+      minValue: -1,
+      step: 1,
+      inputWidth: 100,
+      start: -2,
+      plusClick: function(val) {
+        console.log("plus: " + val);
+      },
+      minusClick: function(val) {
+        console.log("minus: " + val);
+      },
+      exceptionFun: function(val) {
+        console.log("excep: " + val);
+      },
+      valueChanged: function(val) {
+        console.log('change: ' + val);
+      }
+    }
+    $(".wan-spinner-1").WanSpinner(options);
+    $(".wan-spinner-2").WanSpinner();
+  });
+  </script>
+</body>
+
+</html>
