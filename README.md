@@ -5,7 +5,7 @@
 
 **demo**
 
-> test/test.html
+> demo/test.html
 
 **prepare to use**
 > - include jQuery
