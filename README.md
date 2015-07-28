@@ -1,5 +1,8 @@
 #wan-spinner,  a jQuery Spinner
 ----------
+
+> ![example](https://github.com/feichao/wan-spinner/blob/master/test/img/example.png)
+
 **prepare to use**
 > - include jQuery
 > - include bulid/wan-spinner.css 
