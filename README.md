@@ -1,7 +1,7 @@
 #wan-spinner,  a jQuery Spinner
 ----------
 
-> ![example](https://github.com/feichao/wan-spinner/blob/master/test/img/example.png)
+> ![demo](https://github.com/feichao/Images/blob/master/wan-spinner.png)
 
 **demo**
 
