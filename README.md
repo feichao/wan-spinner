@@ -3,6 +3,10 @@
 
 > ![example](https://github.com/feichao/wan-spinner/blob/master/test/img/example.png)
 
+**demo**
+
+> test/test.html
+
 **prepare to use**
 > - include jQuery
 > - include bulid/wan-spinner.css 
