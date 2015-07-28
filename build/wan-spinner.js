@@ -90,6 +90,7 @@
   $.fn.WanSpinner = function(options) {
     var wanSpinner = new WanSpinner(this, options);
     wanSpinner.bind();
+    return this;
   };
 
 })(jQuery, window, document);

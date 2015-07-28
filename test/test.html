@@ -15,6 +15,7 @@
     <input type="text" value="1">
     <a href="javascript:void(0)" class="plus">+</a>
   </div>
+  <br/>
   <div class="wan-spinner wan-spinner-2">
     <a href="javascript:void(0)" class="minus">-</a>
     <input type="text" value="1">
@@ -27,7 +28,7 @@
     var options = {
       maxValue: 3,
       minValue: -1,
-      step: 1,
+      step: 0.1,
       inputWidth: 100,
       start: -2,
       plusClick: function(val) {
@@ -44,7 +45,7 @@
       }
     }
     $(".wan-spinner-1").WanSpinner(options);
-    $(".wan-spinner-2").WanSpinner();
+    $(".wan-spinner-2").WanSpinner().css("border-color", "red");
   });
   </script>
 </body>
