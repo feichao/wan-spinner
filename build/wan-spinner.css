@@ -16,6 +16,7 @@
   border-left: 1px solid #dddddd;
   border-right: 1px solid #dddddd;
   outline: none;
+  line-height: 1em;
   padding: 6px;
   text-align: center;
   width: 24px;
@@ -29,6 +30,7 @@
   text-align: center;
   text-decoration: none;
   width: 15px;
+  line-height: 1em;
 }
 
 
