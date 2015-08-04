@@ -29,6 +29,7 @@
     this.options = $.extend({}, this.defaults, options);
     this.options.stepFloat = 1 / this.options.step;
     this.element = $(element);
+    this.options.element = this.element;
     this.inputElement = $(this.element.children('input'));
     this.inputElement.val(this.options.start).css('width', this.options.inputWidth)
     this.EXCEPTION = {
@@ -52,8 +53,8 @@
         typeof(self.options.exceptionFun) === 'function' && self.options.exceptionFun(self.EXCEPTION.TOO_SMALL);
       } else {
         self.inputElement.val(val);
-        typeof(self.options.minusClick) === 'function' && self.options.minusClick(val);
-        typeof(self.options.valueChanged) === 'function' && self.options.valueChanged(val);
+        typeof(self.options.minusClick) === 'function' && self.options.minusClick(self.options.element, val);
+        typeof(self.options.valueChanged) === 'function' && self.options.valueChanged(self.options.element, val);
       }
       return false;
     }).delegate('.plus', 'click', function() {
@@ -68,8 +69,8 @@
         typeof(self.options.exceptionFun) === 'function' && self.options.exceptionFun(self.EXCEPTION.TOO_LARGE);
       } else {
         self.inputElement.val(val);
-        typeof(self.options.plusClick) === 'function' && self.options.plusClick(val);
-        typeof(self.options.valueChanged) === 'function' && self.options.valueChanged(val);
+        typeof(self.options.plusClick) === 'function' && self.options.plusClick(self.options.element, val);
+        typeof(self.options.valueChanged) === 'function' && self.options.valueChanged(self.options.element, val);
       }
       return false;
     }).delegate('input', 'change', function() {
@@ -82,7 +83,7 @@
         typeof(self.options.exceptionFun) === 'function' && self.options.exceptionFun(self.EXCEPTION.TOO_SMALL);
       }
       self.inputElement.val(val);
-      typeof(self.options.valueChanged) === 'function' && self.options.valueChanged(val);
+      typeof(self.options.valueChanged) === 'function' && self.options.valueChanged(self.options.element, val);
     });
   }
 
