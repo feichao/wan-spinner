@@ -14,16 +14,16 @@
       start: 1,
       inputWidth: 25,
       plusClick: function(val) {
-        output('plus chick, value: ' + val);
+        return true;
       },
       minusClick: function(val) {
-        output('minus chick, value: ' + val);
+        return true;
       },
       exceptionFun: function(exp) {
-        output('exception: ' + exp);
+        return true;
       },
       valueChanged: function(val) {
-        output('value changed to: ' + val);
+        return true;
       }
     };
     this.options = $.extend({}, this.defaults, options);
