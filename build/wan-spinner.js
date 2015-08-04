@@ -13,16 +13,16 @@
       step: 1,
       start: 1,
       inputWidth: 25,
-      plusClick: function(val) {
+      plusClick: function(element, val) {
         return true;
       },
-      minusClick: function(val) {
+      minusClick: function(element, val) {
         return true;
       },
       exceptionFun: function(exp) {
         return true;
       },
-      valueChanged: function(val) {
+      valueChanged: function(element, val) {
         return true;
       }
     };
@@ -31,7 +31,10 @@
     this.element = $(element);
     this.options.element = this.element;
     this.inputElement = $(this.element.children('input'));
-    this.inputElement.val(this.options.start).css('width', this.options.inputWidth)
+
+    var initValue = this.inputElement.val() || this.options.start;
+    this.inputElement.val(initValue).css('width', this.options.inputWidth);
+
     this.EXCEPTION = {
       TOO_LARGE: 1,
       NORMAL: 0,
@@ -44,10 +47,10 @@
     $(self.element).delegate('.minus', 'click', function() {
       var val;
       if (self.options.stepFloat > 1) {
-        val = (Number(self.inputElement.val()) || 0) * self.options.stepFloat - (self.options.step || 1) * self.options.stepFloat;
+        val = (+self.inputElement.val() || 0) * self.options.stepFloat - (self.options.step || 1) * self.options.stepFloat;
         val = Math.round(val) / self.options.stepFloat;
       } else {
-        val = (Number(self.inputElement.val()) || 0) - (self.options.step || 1);
+        val = (+self.inputElement.val() || 0) - (self.options.step || 1);
       }
       if (val < self.options.minValue) {
         typeof(self.options.exceptionFun) === 'function' && self.options.exceptionFun(self.EXCEPTION.TOO_SMALL);
@@ -60,10 +63,10 @@
     }).delegate('.plus', 'click', function() {
       var val;
       if (self.options.stepFloat > 1) {
-        val = (Number(self.inputElement.val()) || 0) * self.options.stepFloat + (self.options.step || 1) * self.options.stepFloat;
+        val = (+self.inputElement.val() || 0) * self.options.stepFloat + (self.options.step || 1) * self.options.stepFloat;
         val = Math.round(val) / self.options.stepFloat;
       } else {
-        val = (Number(self.inputElement.val()) || 0) + (self.options.step || 1);
+        val = (+self.inputElement.val() || 0) + (self.options.step || 1);
       }
       if (val > self.options.maxValue) {
         typeof(self.options.exceptionFun) === 'function' && self.options.exceptionFun(self.EXCEPTION.TOO_LARGE);
@@ -74,7 +77,7 @@
       }
       return false;
     }).delegate('input', 'change', function() {
-      var val = Number(self.inputElement.val()) || 0;
+      var val = +self.inputElement.val() || 0;
       if (val > self.options.maxValue) {
         val = self.options.maxValue;
         typeof(self.options.exceptionFun) === 'function' && self.options.exceptionFun(self.EXCEPTION.TOO_LARGE);
