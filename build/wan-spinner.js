@@ -27,7 +27,8 @@
       }
     };
     this.options = $.extend({}, this.defaults, options);
-    this.options.stepFloat = 1 / this.options.step;
+    this.options.stepLength = ((+this.options.step).toString().split('.')[1] || '').length;
+    this.options.stepFloat = parseInt(1 * Math.pow(10, this.options.stepLength) / this.options.step) || 1;
     this.element = $(element);
 
     this.element.each(function(index, dt) {
@@ -51,11 +52,12 @@
       var val;
       var input = $(this).siblings('input');
       if (self.options.stepFloat > 1) {
-        val = (+input.val() || 0) * self.options.stepFloat - (self.options.step || 1) * self.options.stepFloat;
+        val = (+input.val() || 0) * self.options.stepFloat - self.options.step  * self.options.stepFloat;
         val = Math.round(val) / self.options.stepFloat;
       } else {
-        val = (+input.val() || 0) - (self.options.step || 1);
+        val = (+input.val() || 0) - self.options.step;
       }
+      val = val.toFixed(self.options.stepLength);
       if (val < self.options.minValue) {
         typeof(self.options.exceptionFun) === 'function' && self.options.exceptionFun(self.EXCEPTION.TOO_SMALL);
       } else {
@@ -68,11 +70,12 @@
       var val;
       var input = $(this).siblings('input');
       if (self.options.stepFloat > 1) {
-        val = (+input.val() || 0) * self.options.stepFloat + (self.options.step || 1) * self.options.stepFloat;
+        val = (+input.val() || 0) * self.options.stepFloat + self.options.step * self.options.stepFloat;
         val = Math.round(val) / self.options.stepFloat;
       } else {
-        val = (+input.val() || 0) + (self.options.step || 1);
+        val = (+input.val() || 0) + self.options.step;
       }
+      val = val.toFixed(self.options.stepLength);
       if (val > self.options.maxValue) {
         typeof(self.options.exceptionFun) === 'function' && self.options.exceptionFun(self.EXCEPTION.TOO_LARGE);
       } else {

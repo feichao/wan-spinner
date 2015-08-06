@@ -8,17 +8,19 @@
 .wan-spinner .minus,
 .wan-spinner .plus,
 .wan-spinner input {
+  height: 15px;
   float: left;
+  line-height: 1em;
+  padding: 5px;
+  text-align: center;
 }
 
 .wan-spinner input {
   border: none;
   border-left: 1px solid #dddddd;
   border-right: 1px solid #dddddd;
+  margin: 0;
   outline: none;
-  line-height: 1em;
-  padding: 6px;
-  text-align: center;
   width: 24px;
 }
 
@@ -26,11 +28,8 @@
 .wan-spinner .plus {
   color: #333333;
   cursor: pointer;
-  padding: 5px;
-  text-align: center;
   text-decoration: none;
   width: 15px;
-  line-height: 1em;
 }
 
 
