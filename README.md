@@ -12,11 +12,13 @@
 > - include bulid/wan-spinner.css 
 > - include build/wan-sinner.js
 > - in your html:
-> `<div class="wan-spinner">
-<a href="javascript:void(0)" class="minus">-</a>
-<input type="text" value="1">
-<a href="javascript:void(0)" class="plus">+</a>
-</div>`
+> ```html
+><div class="wan-spinner">
+>  <a href="javascript:void(0)" class="minus">-</a>
+>  <input type="text" value="1">
+>  <a href="javascript:void(0)" class="plus">+</a>
+></div>
+>```
 
 **how to use**
  
