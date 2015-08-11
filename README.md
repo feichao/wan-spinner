@@ -1,9 +1,9 @@
 #wan-spinner,  a jQuery Spinner
 ----------
 
-> ![demo](https://github.com/feichao/Images/blob/master/wan-spinner.png)
+> ![demo](http://7xl1b4.com1.z0.glb.clouddn.com/wan-spinner.png)
 
-**demo**
+### [demo](http://0xfc.cn/2015/08/09/spinner/) ###
 
 > demo/test.html
 
@@ -42,4 +42,3 @@
 > minusClick: function. A trigger when Minus Button is clicked.
 > 
 > valueChanged: function. A trigger when Input Value is changed.
-
