@@ -12,7 +12,7 @@
       minValue: -999,
       step: 1,
       start: 1,
-      inputWidth: 25,
+      inputWidth: 40,
       plusClick: function(element, val) {
         return true;
       },
