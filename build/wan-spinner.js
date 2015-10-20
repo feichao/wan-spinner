@@ -19,7 +19,7 @@
       minusClick: function(element, val) {
         return true;
       },
-      exceptionFun: function(exp) {
+      exceptionFun: function(element, exp) {
         return true;
       },
       valueChanged: function(element, val) {
@@ -64,7 +64,7 @@
       }
       val = val.toFixed(self.options.stepLength);
       if (val < self.options.minValue) {
-        self.options.exceptionFunEnable && self.options.exceptionFun(self.EXCEPTION.TOO_SMALL);
+        self.options.exceptionFunEnable && self.options.exceptionFun($(this).parent(), self.EXCEPTION.TOO_SMALL);
       } else {
         input.val(val);
         self.options.minusClickEnable && self.options.minusClick($(this).parent(), val);
@@ -82,7 +82,7 @@
       }
       val = val.toFixed(self.options.stepLength);
       if (val > self.options.maxValue) {
-        self.options.exceptionFunEnable && self.options.exceptionFun(self.EXCEPTION.TOO_LARGE);
+        self.options.exceptionFunEnable && self.options.exceptionFun($(this).parent(), self.EXCEPTION.TOO_LARGE);
       } else {
         input.val(val);
         self.options.plusClickEnable && self.options.plusClick($(this).parent(), val);
@@ -93,10 +93,10 @@
       var val = +$(this).val() || 0;
       if (val > self.options.maxValue) {
         val = self.options.maxValue;
-        self.options.exceptionFunEnable && self.options.exceptionFun(self.EXCEPTION.TOO_LARGE);
+        self.options.exceptionFunEnable && self.options.exceptionFun($(this).parent(), self.EXCEPTION.TOO_LARGE);
       } else if (val < self.options.minValue) {
         val = self.options.minValue;
-        self.options.exceptionFunEnable && self.options.exceptionFun(self.EXCEPTION.TOO_SMALL);
+        self.options.exceptionFunEnable && self.options.exceptionFun($(this).parent(), self.EXCEPTION.TOO_SMALL);
       }
       $(this).val(val);
       self.options.valueChangedEnable && self.options.valueChanged($(this).parent(), val);
