@@ -31,6 +31,11 @@
     this.options.stepFloat = parseInt(1 * Math.pow(10, this.options.stepLength) / this.options.step) || 1;
     this.element = $(element);
 
+    this.options.exceptionFunEnable = (typeof(this.options.exceptionFun) === 'function');
+    this.options.plusClickEnable = (typeof(this.options.plusClick) === 'function');
+    this.options.minusClickEnable = (typeof(this.options.minusClick) === 'function');
+    this.options.valueChangedEnable = (typeof(this.options.valueChanged) === 'function');
+
     this.element.each(function(index, dt) {
       var input = $(dt).children('input');
       var initValue = input.val() || this.options.start;
@@ -59,11 +64,11 @@
       }
       val = val.toFixed(self.options.stepLength);
       if (val < self.options.minValue) {
-        typeof(self.options.exceptionFun) === 'function' && self.options.exceptionFun(self.EXCEPTION.TOO_SMALL);
+        self.options.exceptionFunEnable && self.options.exceptionFun(self.EXCEPTION.TOO_SMALL);
       } else {
         input.val(val);
-        typeof(self.options.minusClick) === 'function' && self.options.minusClick($(this).parent(), val);
-        typeof(self.options.valueChanged) === 'function' && self.options.valueChanged($(this).parent(), val);
+        self.options.minusClickEnable && self.options.minusClick($(this).parent(), val);
+        self.options.valueChangedEnable && self.options.valueChanged($(this).parent(), val);
       }
       return false;
     }).delegate('.plus', 'click', function() {
@@ -77,24 +82,24 @@
       }
       val = val.toFixed(self.options.stepLength);
       if (val > self.options.maxValue) {
-        typeof(self.options.exceptionFun) === 'function' && self.options.exceptionFun(self.EXCEPTION.TOO_LARGE);
+        self.options.exceptionFunEnable && self.options.exceptionFun(self.EXCEPTION.TOO_LARGE);
       } else {
         input.val(val);
-        typeof(self.options.plusClick) === 'function' && self.options.plusClick($(this).parent(), val);
-        typeof(self.options.valueChanged) === 'function' && self.options.valueChanged($(this).parent(), val);
+        self.options.plusClickEnable && self.options.plusClick($(this).parent(), val);
+        self.options.valueChangedEnable && self.options.valueChanged($(this).parent(), val);
       }
       return false;
     }).delegate('input', 'change', function() {
       var val = +$(this).val() || 0;
       if (val > self.options.maxValue) {
         val = self.options.maxValue;
-        typeof(self.options.exceptionFun) === 'function' && self.options.exceptionFun(self.EXCEPTION.TOO_LARGE);
+        self.options.exceptionFunEnable && self.options.exceptionFun(self.EXCEPTION.TOO_LARGE);
       } else if (val < self.options.minValue) {
         val = self.options.minValue;
-        typeof(self.options.exceptionFun) === 'function' && self.options.exceptionFun(self.EXCEPTION.TOO_SMALL);
+        self.options.exceptionFunEnable && self.options.exceptionFun(self.EXCEPTION.TOO_SMALL);
       }
       $(this).val(val);
-      typeof(self.options.valueChanged) === 'function' && self.options.valueChanged($(this).parent(), val);
+      self.options.valueChangedEnable && self.options.valueChanged($(this).parent(), val);
     });
   }
 
